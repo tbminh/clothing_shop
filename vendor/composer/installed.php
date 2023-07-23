@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '2d2ce8eb06369450bbeadac24a7b02a7fc62064c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -404,9 +404,9 @@
             'dev_requirement' => false,
         ),
         'jaybizzle/crawler-detect' => array(
-            'pretty_version' => 'v1.2.115',
-            'version' => '1.2.115.0',
-            'reference' => '4531e4a70d55d10cbe7d41ac1ff0d75a5fe2ef1e',
+            'pretty_version' => 'v1.2.116',
+            'version' => '1.2.116.0',
+            'reference' => '97e9fe30219e60092e107651abb379a38b342921',
             'type' => 'library',
             'install_path' => __DIR__ . '/../jaybizzle/crawler-detect',
             'aliases' => array(),
@@ -455,9 +455,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '2d2ce8eb06369450bbeadac24a7b02a7fc62064c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
