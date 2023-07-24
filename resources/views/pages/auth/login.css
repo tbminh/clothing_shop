@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
+.fmlogin body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #fff;
+    background-color: #EA2C62;
+    overflow-x: hidden
+}
+
+.fmlogin a {
+    cursor: pointer;
+    transition: all 200ms linear
+}
+
+a:hover {
+    text-decoration: none
+}
+
+.fmlogin .link {
+    color: #fff
+}
+
+.fmlogin .link:hover {
+    color: #EA2C62
+}
+
+.fmlogin p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.7
+}
+
+.fmlogin h4 {
+    font-weight: 600
+}
+
+.fmlogin h6 span {
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-weight: 700
+}
+
+.section {
+    position: relative;
+    width: 100%;
+    display: block
+}
+
+.fmlogin .full-height {
+    min-height: 100vh
+}
+
+.fmlogin [type="checkbox"]:checked,
+.fmlogin [type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px
+}
+
+.fmlogin .checkbox:checked+label,
+.fmlogin .checkbox:not(:checked)+label {
+    position: relative;
+    display: block;
+    text-align: center;
+    width: 130px;
+    height: 16px;
+    border-radius: 2px;
+    padding: 0;
+    margin: 10px auto;
+    cursor: pointer;
+    /* border: 2px solid rgb(208, 20, 20); */
+    background-color: #ffafcc
+}
+
+.fmlogin .checkbox:checked+label:before,
+.fmlogin .checkbox:not(:checked)+label:before {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 10%;
+    background-color: #ffc8dd;
+    content:'';
+    z-index: 20;
+    font-size: 12px;
+    top: -13px;
+    left: -10px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 24px;
+    transition: all 0.5s ease
+}
+
+.fmlogin .checkbox:checked+label:before {
+    transform: translateX(120px) rotate(-270deg)
+}
+
+.fmlogin .card-3d-wrap {
+    position: relative;
+    width: 440px;
+    max-width: 100%;
+    height: 400px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    margin-top: 40px
+}
+
+.fmlogin .card-3d-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: all 600ms ease-out
+}
+
+.fmlogin .login-div {
+    width: 150px
+}
+
+.fmlogin .card-front,
+.fmlogin .card-back {
+    width: 100%;
+    height: 100%;
+    background-color: #ffc8dd;
+    /* background-color: #2a2b38; */
+    position: absolute;
+    border-radius: 0px;
+    left: 0;
+    top: 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    backface-visibility: hidden
+}
+
+.fmlogin .card-back {
+    transform: rotateY(180deg)
+}
+
+.fmlogin .checkbox:checked~.card-3d-wrap .card-3d-wrapper {
+    transform: rotateY(180deg)
+}
+
+.fmlogin .center-wrap {
+    position: absolute;
+    width: 100%;
+    padding: 0 35px;
+    top: 50%;
+    left: 0;
+    transform: translate3d(0, -50%, 35px) perspective(100px);
+    z-index: 20;
+    display: block
+}
+
+.fmlogin .form-group {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0
+}
+
+.fmlogin .form-style {
+    padding: 13px 20px;
+    padding-left: 55px;
+    height: 48px;
+    width: 100%;
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+    outline: none;
+    color: #c4c3ca;
+    background-color: #1f2029;
+    border: none;
+    transition: all 200ms linear;
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2)
+}
+
+.fmlogin .form-style:focus,
+.fmlogin .form-style:active {
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2)
+}
+
+.fmlogin .input-icon {
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 48px;
+    font-size: 24px;
+    line-height: 48px;
+    text-align: left;
+    color: #EA2C62;
+    transition: all 200ms linear
+}
+
+.fmlogin .form-group input:-ms-input-placeholder {
+    color: #c4c3ca;
+    opacity: 0.7;
+    transition: all 200ms linear
+}
+
+.fmlogin .form-group input::-moz-placeholder {
+    color: #c4c3ca;
+    opacity: 0.7;
+    transition: all 200ms linear
+}
+
+.fmlogin .form-group input:-moz-placeholder {
+    color: #c4c3ca;
+    opacity: 0.7;
+    transition: all 200ms linear
+}
+
+.fmlogin .form-group input::-webkit-input-placeholder {
+    color: #c4c3ca;
+    opacity: 0.7;
+    transition: all 200ms linear
+}
+
+.fmlogin .form-group input:focus:-ms-input-placeholder {
+    opacity: 0;
+    transition: all 200ms linear
+}
+
+.fmlogin .form-group input:focus::-moz-placeholder {
+    opacity: 0;
+    transition: all 200ms linear
+}
+
+.fmlogin .form-group input:focus:-moz-placeholder {
+    opacity: 0;
+    transition: all 200ms linear
+}
+
+.fmlogin .form-group input:focus::-webkit-input-placeholder {
+    opacity: 0;
+    transition: all 200ms linear
+}
+
+.fmlogin .btn {
+    border-radius: 4px;
+    height: 48px;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 200ms linear;
+    padding: 0 30px;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    text-align: center;
+    border: none;
+    background-color: #EA2C62;
+    color: #fff;
+    box-shadow: 0 8px 24px 0 rgba(18, 248, 173, .2)
+}
+
+.fmlogin .btn:active,
+.fmlogin .btn:focus {
+    background-color: #fff;
+    color: #EA2C62;
+    box-shadow: 0 8px 24px 0 rgba(255, 255, 255, .2)
+}
+
+.fmlogin .btn:hover {
+    background-color: #fff;
+    color: #EA2C62;
+    box-shadow: 0 8px 24px 0 rgba(255, 255, 255, .2)
+}
+
+.fmlogin .logo {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: block;
+    z-index: 100;
+    transition: all 250ms linear
+}
+
+.fmlogin .logo img {
+    height: 26px;
+    width: auto;
+    display: block
+}

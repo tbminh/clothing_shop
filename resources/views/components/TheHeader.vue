@@ -58,10 +58,10 @@ export default {
   },
   methods: {
     handleScroll() {
-      if (window.scrollY > 50) {
-        this.navbarClasses = 'navbar navbar-expand-lg navbar-dark bg-primary fixed-top';
+      if (window.scrollY >= 50 ) {
+        this.navbarClasses = 'fixed-top';
       } else {
-        this.navbarClasses = 'navbar navbar-expand-lg navbar-dark bg-primary';
+        this.navbarClasses = '';
       }
     },
     toggleDropdown(show) {
@@ -90,7 +90,7 @@ export default {
       </div>
     </div>
 
-    <nav :class="navbarClasses">
+    <nav :class="navbarClasses" class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand px-5" href="#">Logo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
