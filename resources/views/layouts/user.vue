@@ -19,7 +19,9 @@
 </template>
 <script>
 import TheHeader from '../components/TheHeader.vue';
+import axios from 'axios';
 export default {
+   
     components: {
         TheHeader
     }

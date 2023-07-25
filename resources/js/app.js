@@ -19,3 +19,4 @@ app.use(Drawer);
 app.mount("#app");
 
 app.config.globalProperties.$message=message;
+// router.history.base = '#';
