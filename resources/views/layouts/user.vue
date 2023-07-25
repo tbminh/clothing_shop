@@ -16,14 +16,17 @@
 <template>
     <TheHeader />
     <router-view></router-view>
+    <TheFooter />
 </template>
 <script>
 import TheHeader from '../components/TheHeader.vue';
+import TheFooter from '../components/TheFooter.vue';
 import axios from 'axios';
 export default {
    
     components: {
-        TheHeader
+        TheHeader,
+        TheFooter
     }
 }
 </script>
