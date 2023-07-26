@@ -46,6 +46,12 @@
                                                     <i class="input-icon fa fa-at"></i> 
                                                 </div>
                                             <div class="form-group mt-2"> 
+                                                <input type="text" name="yourphone"
+                                                    class="form-style" placeholder="Số điện thoại" id="yourphone"
+                                                    autocomplete="none"> 
+                                                    <i class="input-icon fa fa-at"></i> 
+                                                </div>
+                                            <div class="form-group mt-2"> 
                                                 <input type="password" name="logpass"
                                                     class="form-style" placeholder="Mật khẩu" id="logpass"
                                                     autocomplete="none"> <i class="input-icon fa fa-lock"></i> 

@@ -6,7 +6,7 @@ const user =[
             {
                 path:"login",
                 name: "auth-home",
-                component: () => import ("../resources/views/pages/auth/login.vue")
+                component: () => import ("../resources/views/pages/auth/auth.vue")
             },
             {
                 path:"register",
