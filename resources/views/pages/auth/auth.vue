@@ -7,8 +7,8 @@
                 <form action="" class="sign-in-form">
                     <h2 class="title">Đăng nhập</h2>
                     <div class="input-field">
-                        <font-awesome-icon :icon="['fas', 'user']" class="fa-lg iconinput" />
-                        <input type="text" placeholder="Tên người dùng">
+                        <font-awesome-icon :icon="['fas', 'envelope']" class="fa-lg iconinput" />
+                        <input type="text" placeholder="Email">
                     </div>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'lock']" class="fa-lg iconinput" />

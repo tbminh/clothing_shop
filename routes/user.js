@@ -14,7 +14,7 @@ const user =[
                 component: () => import ("../resources/views/pages/auth/register.vue")
             },
             {
-                path:"home",
+                path:"/",
                 name: "screens-home",
                 component: () => import ("../resources/views/pages/screens/home/index.vue")
             },
