@@ -60,7 +60,7 @@ class RegisterController extends Controller
    
         if ($validator->fails()){
             return response()->json([
-                'message' => 'Validation Error',
+                'message' => 'Xác nhận mật khẩu không đúng',
                 'data' => $validator->errors(),
                 'encode' => 1,
             ], 400);         
@@ -72,12 +72,9 @@ class RegisterController extends Controller
         $success['name'] =  $user->name;
    
         return response()->json([
-            'message' => 'Register successfully',
+            'message' => 'Đăng ký thành công',
             'data' => "",
             'encode' => 0,
-        ], 400);
-    }
-    public function login(Request $request){
-
+        ], 200);
     }
 }
