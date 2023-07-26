@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     // Route::get('/sp', [TextController::class, 'index']);
 //     Route::get('/sp', 'App\Http\Controllers\Api\TextController@index');
 // });
-Route::get('/use', [UserController::class, 'index']);
-Route::get('/use/{id}', [UserController::class, 'show']);
+Route::post('/register',[RegisterController::class,'registerd']);
+Route::post('/login',[RegisterController::class,'login']);
 
-Route::apiResource('/user', UserController::class);
+Route::get('/use',[UserController::class, 'index']);
