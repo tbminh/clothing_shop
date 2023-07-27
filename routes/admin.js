@@ -4,9 +4,9 @@ const admin =[
         component:() => import("../resources/views/layouts/admin.vue"),
         children:[
             {
-                path:"users",
-                name: "admin-users",
-                component: () => import ("../resources/views/pages/admin/users/index.vue")
+                path:"login",
+                name: "admin-login",
+                component: () => import ("../resources/views/pages/admin/login/index.vue")
             },
             {
                 path:"roles",

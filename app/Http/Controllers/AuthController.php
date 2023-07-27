@@ -35,7 +35,7 @@ class AuthController extends Controller
             'email' => ['The provided credentials are incorrect.'],
         ]);
     }
-    public function registerd(Request $request)
+    public function register(Request $request)
     {
       
         $validator = Validator::make($request->all(), [
@@ -55,28 +55,15 @@ class AuthController extends Controller
             $user = new User([
                 'name' => $request->name,
                 'email' => $request->email,
-                'phone' => $request->phone,
-                'password' => Hash::make($request->password),
+                'phone_number' => $request->phone_number,
+                'password' => bcrypt($request->password),
             ]);
-    
             $user->save();
-    
-            return response()->json(['message' => 'Đăng ký thành công'], 201);
-        
-
-
-    
-   
-        
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-        $success['name'] =  $user->name;
-   
+            $token = $user->createToken('authToken')->plainTextToken;
         return response()->json([
+            'token' => $token, 
             'message' => 'Đăng ký thành công',
-            'data' => "",
+            'data' => $user,
             'encode' => 0,
         ], 200);
     }

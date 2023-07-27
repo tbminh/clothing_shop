@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function(Request $request) {
 //     // Route::get('/sp', [TextController::class, 'index']);
 //     Route::get('/sp', 'App\Http\Controllers\Api\TextController@index');
 // });
-Route::post('/register',[AuthController::class,'registerd']);
+Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);  
 
 Route::get('/use',[UserController::class, 'index']);

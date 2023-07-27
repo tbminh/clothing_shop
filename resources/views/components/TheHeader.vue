@@ -56,7 +56,7 @@ export default {
             <div class="col-2  d-flex align-items-center">LOGO</div>
             <div class="col-6  align-items-center" style="display: grid;">
               <div style="position: relative; ">
-                <input type="text" class="textsearch" placeholder="Tìm kiếm..." />
+                <input type="search" class="textsearch" placeholder="Tìm kiếm..." />
                 <button class="search-button">
                   <font-awesome-icon :icon="['fas', 'search']" class="" />
                 </button>

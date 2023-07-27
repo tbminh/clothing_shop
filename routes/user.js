@@ -9,11 +9,6 @@ const user =[
                 component: () => import ("../resources/views/pages/auth/auth.vue")
             },
             {
-                path:"register",
-                name: "auth-product",
-                component: () => import ("../resources/views/pages/auth/register.vue")
-            },
-            {
                 path:"/",
                 name: "screens-home",
                 component: () => import ("../resources/views/pages/screens/home/index.vue")

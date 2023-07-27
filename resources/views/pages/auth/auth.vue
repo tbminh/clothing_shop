@@ -8,49 +8,54 @@
                     <h2 class="title">Đăng nhập</h2>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'envelope']" class="fa-lg iconinput" />
-                        <input type="email"  v-model="data.email" placeholder="Email">
+                        <input type="email" v-model="data.email" placeholder="Email">
                     </div>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'lock']" class="fa-lg iconinput" />
-                        <input  placeholder="Mật khẩu" v-model="data.password" v-bind:type="showPassword ? 'text' : 'password'"
+                        <input placeholder="Mật khẩu" v-model="data.password"
+                            v-bind:type="showPassword ? 'text' : 'password'"
                             :placeholder="showPassword ? 'Mật khẩu' : 'Ẩn mật khẩu'">
                         <span @click="togglePasswordVisibility">
-                            <font-awesome-icon :icon="showPassword ? ['fas', 'eye'] : ['fas', 'eye-slash']" class="fa-lg showpass" />
+                            <font-awesome-icon :icon="showPassword ? ['fas', 'eye'] : ['fas', 'eye-slash']"
+                                class="fa-lg showpass" />
                         </span>
                     </div>
                     <input type="submit" value="Đăng nhập" class="btn buttonsubmit">
-                    <p class="account-text">bạn chưa có tài khoản? <a href="#" class="btn py-0 px-2" @click="signUpClick2">Đăng ký</a>
+                    <p class="account-text">bạn chưa có tài khoản? <a href="#" class="btn py-0 px-2"
+                            @click="signUpClick2">Đăng ký</a>
                     </p>
 
                 </form>
-                <form action="" class="sign-up-form">
+                <form  @submit.prevent="register" class="sign-up-form">
                     <h2 class="title">Đăng ký</h2>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'user']" class="fa-lg iconinput" />
-                        <input type="text" placeholder="Tên người dùng">
+                        <input type="text" v-model="data.resname" placeholder="Tên người dùng">
                     </div>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'envelope']" class="fa-lg iconinput" />
-                        <input type="text" placeholder="Email">
+                        <input type="text" v-model="data.resemail" placeholder="Email">
                     </div>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'phone']" class="fa-lg iconinput" />
-                        <input type="text" placeholder="Số điện thoại">
+                        <input type="text" v-model="data.resphone" placeholder="Số điện thoại">
                     </div>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'lock']" class="fa-lg iconinput" />
-                        <input  placeholder="Mật khẩu" v-bind:type="showPassword2 ? 'text' : 'password'"
+                        <input placeholder="Mật khẩu" v-model="data.respassword" v-bind:type="showPassword2 ? 'text' : 'password'"
                             :placeholder="showPassword2 ? 'Mật khẩu' : 'Ẩn mật khẩu'">
                         <span @click="togglePasswordVisibility2">
-                            <font-awesome-icon :icon="showPassword2 ? ['fas', 'eye'] : ['fas', 'eye-slash']" class="fa-lg showpass" />
+                            <font-awesome-icon :icon="showPassword2 ? ['fas', 'eye'] : ['fas', 'eye-slash']"
+                                class="fa-lg showpass" />
                         </span>
                     </div>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'lock']" class="fa-lg iconinput" />
-                        <input  placeholder="Xác nhận mật khẩu" v-bind:type="showPassword2 ? 'text' : 'password'"
+                        <input placeholder="Xác nhận mật khẩu"  v-model="data.c_password" v-bind:type="showPassword2 ? 'text' : 'password'"
                             :placeholder="showPassword2 ? 'Mật khẩu' : 'Ẩn mật khẩu'">
                         <span @click="togglePasswordVisibility2">
-                            <font-awesome-icon :icon="showPassword2 ? ['fas', 'eye'] : ['fas', 'eye-slash']" class="fa-lg showpass" />
+                            <font-awesome-icon :icon="showPassword2 ? ['fas', 'eye'] : ['fas', 'eye-slash']"
+                                class="fa-lg showpass" />
                         </span>
                     </div>
                     <input type="submit" value="Đăng ký" class=" buttonsubmit">
@@ -121,39 +126,42 @@ const togglePasswordVisibility2 = () => {
 
 
 const data = ref({
-  value: {
-    email: '',
-    password: ''
-  }
+    value: {
+        email: '',
+        password: ''
+    }
 });
 
 const login = () => {
-  axios.post('/api/login', {
-    email: data.value.email,
-    password: data.value.password
-  })
-  .then(response => {
-    // Xử lý phản hồi từ server sau khi đăng nhập thành công
-    console.log(response.data);
-  })
-  .catch(error => {
-    // Xử lý lỗi nếu có
-    console.error(error);
-  });
+    axios.post('/api/login', {
+        email: data.value.email,
+        password: data.value.password
+    })
+        .then(response => {
+            // Xử lý phản hồi từ server sau khi đăng nhập thành công
+            console.log(response.data);
+        })
+        .catch(error => {
+            // Xử lý lỗi nếu có
+            console.error(error);
+        });
 };
 const register = () => {
-  axios.post('/api/register', {
-    email: data.value.email,
-    password: data.value.password
-  })
-  .then(response => {
-    // Xử lý phản hồi từ server sau khi đăng nhập thành công
-    console.log(response.data);
-  })
-  .catch(error => {
-    // Xử lý lỗi nếu có
-    console.error(error);
-  });
+    axios.post('/api/register', {
+        phone_number: data.value.resphone,
+        email: data.value.resemail,
+        name: data.value.resname,
+        password: data.value.respassword,
+        c_password: data.value.c_password,
+    })
+        .then(response => {
+            // Xử lý phản hồi từ server sau khi đăng nhập thành công
+            console.log(response.data);
+        })
+        .catch(error => {
+            // Xử lý lỗi nếu có
+            console.error(error);
+        });
 };
 
 </script>
