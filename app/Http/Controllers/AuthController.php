@@ -24,7 +24,11 @@ class AuthController extends Controller
             // Generate an authentication token (optional)
             $token = $user->createToken('authToken')->plainTextToken;
             // Return the token or perform any other action
-            return response()->json(['token' => $token], 200);
+            return response()->json([
+            'token' => $token, 
+            'message' => 'Đăng nhập thành công',
+            'data' =>  $user,
+            'encode' => 0,], 200);
         }    
         // Authentication failed
         throw ValidationException::withMessages([
@@ -33,13 +37,13 @@ class AuthController extends Controller
     }
     public function registerd(Request $request)
     {
+      
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
             'c_password' => 'required|same:password',
         ]);
-   
         if ($validator->fails()){
             return response()->json([
                 'message' => 'Xác nhận mật khẩu không đúng',
@@ -47,6 +51,23 @@ class AuthController extends Controller
                 'encode' => 1,
             ], 400);         
         }   
+    
+            $user = new User([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'password' => Hash::make($request->password),
+            ]);
+    
+            $user->save();
+    
+            return response()->json(['message' => 'Đăng ký thành công'], 201);
+        
+
+
+    
+   
+        
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);

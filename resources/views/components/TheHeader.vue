@@ -53,8 +53,8 @@ export default {
       <div class="container-fluid">
         <div class="col-11 mx-auto hea-info2">
           <div class="row">
-            <div class="col-2 border d-flex align-items-center">LOGO</div>
-            <div class="col-6 border align-items-center" style="display: grid;">
+            <div class="col-2  d-flex align-items-center">LOGO</div>
+            <div class="col-6  align-items-center" style="display: grid;">
               <div style="position: relative; ">
                 <input type="text" class="textsearch" placeholder="Tìm kiếm..." />
                 <button class="search-button">
@@ -65,9 +65,10 @@ export default {
             <div class="col-4  d-flex justify-content-end">
               <ul class="navbar-nav  d-flex flex-row ">
                 <li class="nav-item dropdown login  mx-3  ">
-                  <router-link to="/login" class="nav-link textnavlink dropdown-toggle"
-                    @mouseenter="toggleDropdown(true)" @mouseleave="toggleDropdown(false)">
-                    <font-awesome-icon :icon="['fas', 'user']" class="fa-lg" /> <span class="d-none d-sm-inline">My Account</span>
+                  <router-link to="/login" class="nav-link textnavlink dropdown-toggle" @mouseenter="toggleDropdown(true)"
+                    @mouseleave="toggleDropdown(false)">
+                    <font-awesome-icon :icon="['fas', 'user']" class="fa-lg" /> <span class="d-none d-sm-inline">My
+                      Account</span>
                   </router-link>
                   <ul class="dropdown-menu dropdown-menu-right" v-if="showDropdown" @mouseenter="toggleDropdown(true)"
                     @mouseleave="toggleDropdown(false)">
@@ -89,22 +90,16 @@ export default {
                 <li class="nav-item dropdown login mx-3 ">
                   <router-link to="/" class="nav-link textnavlink dropdown-toggle" @mouseenter="toggleDropdown(true)"
                     @mouseleave="toggleDropdown(false)">
-                    <font-awesome-icon :icon="['fas', 'shopping-bag']" class="fa-lg" /> <span class="d-none d-sm-inline">Cart</span>
+                    <font-awesome-icon :icon="['fas', 'shopping-bag']" class="fa-lg" /> <span
+                      class="d-none d-sm-inline">Cart</span>
                   </router-link>
                   <ul class="dropdown-menu dropdown-menu-right" v-if="showDropdown" @mouseenter="toggleDropdown(true)"
                     @mouseleave="toggleDropdown(false)">
                     <li class="m-0 p-0"><a class="dropdown-item  p-3 pr-5" href="#">Đăng nhập</a></li>
-                  
-
                   </ul>
                 </li>
-
-
               </ul>
-              <!-- <div class="collapse navbar-collapse" id="main_nav"></div> -->
             </div>
-            <div class="col-2 border"></div>
-
           </div>
         </div>
 

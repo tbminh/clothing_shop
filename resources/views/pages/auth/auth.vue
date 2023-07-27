@@ -4,15 +4,15 @@
         <div
             :class="{ 'authcontainer': true, 'sign-up-mode': signUpMode, 'sign-in-mode': signInMode, 'sign-up-mode2': signUpMode2, 'sign-in-mode2': signInMode2 }">
             <div class="signin-signup">
-                <form action="" class="sign-in-form">
+                <form @submit.prevent="login" class="sign-in-form">
                     <h2 class="title">Đăng nhập</h2>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'envelope']" class="fa-lg iconinput" />
-                        <input type="text" placeholder="Email">
+                        <input type="email"  v-model="data.email" placeholder="Email">
                     </div>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'lock']" class="fa-lg iconinput" />
-                        <input  placeholder="Mật khẩu" v-bind:type="showPassword ? 'text' : 'password'"
+                        <input  placeholder="Mật khẩu" v-model="data.password" v-bind:type="showPassword ? 'text' : 'password'"
                             :placeholder="showPassword ? 'Mật khẩu' : 'Ẩn mật khẩu'">
                         <span @click="togglePasswordVisibility">
                             <font-awesome-icon :icon="showPassword ? ['fas', 'eye'] : ['fas', 'eye-slash']" class="fa-lg showpass" />
@@ -84,6 +84,7 @@
 </template>
 <script setup>
 import './auth.css';
+import axios from 'axios';
 import { ref } from 'vue';
 const signUpMode = ref(false);
 const signInMode = ref(false);
@@ -115,6 +116,44 @@ const togglePasswordVisibility = () => {
 };
 const togglePasswordVisibility2 = () => {
     showPassword2.value = !showPassword2.value;
+};
+
+
+
+const data = ref({
+  value: {
+    email: '',
+    password: ''
+  }
+});
+
+const login = () => {
+  axios.post('/api/login', {
+    email: data.value.email,
+    password: data.value.password
+  })
+  .then(response => {
+    // Xử lý phản hồi từ server sau khi đăng nhập thành công
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Xử lý lỗi nếu có
+    console.error(error);
+  });
+};
+const register = () => {
+  axios.post('/api/register', {
+    email: data.value.email,
+    password: data.value.password
+  })
+  .then(response => {
+    // Xử lý phản hồi từ server sau khi đăng nhập thành công
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Xử lý lỗi nếu có
+    console.error(error);
+  });
 };
 
 </script>

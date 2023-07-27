@@ -242,7 +242,6 @@ a {
         height: 100vh;
     }
 }
-
 @media (max-width:635px) {
     .authcontainer::before {
         display: none;
@@ -279,4 +278,33 @@ a {
     form {
         width: 90%;
     }
+    .authcontainer::before {
+        display: none;
+    }
+    /* .signin-signup{
+        z-index: 99;
+
+    } */
+    form.sign-up-form {
+        display: none;
+    }
+
+    .authcontainer.sign-up-mode2 form.sign-up-form {
+        display: flex;
+        opacity: 1;
+    }
+
+    .authcontainer.sign-up-mode2 form.sign-in-form {
+        display: none;
+    }
+    .panels-container {
+        display: none;
+    }
+
+    .account-text {
+        display   : inherit;
+        margin-top: 30px;
+    }
+
+
 }
