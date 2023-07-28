@@ -9,14 +9,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'bootstrap/dist/css/bootstrap-utilities.min.css';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
+import Cookies from 'js-cookie';
 
 const app = createApp(App);
 app.component('font-awesome-icon', FontAwesomeIcon);
+app.use(Cookies);
 app.use(router);
 app.use(Button);
 app.use(Drawer);
 app.mount("#app");
 
 app.config.globalProperties.$message=message;
-// router.history.base = '#';

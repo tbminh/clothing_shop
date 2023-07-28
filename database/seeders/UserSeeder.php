@@ -19,15 +19,22 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-
+        DB::table('users')->insert([
+            'name' =>  'Admin',
+            'roles' =>  'admin',
+            'email' =>  'admin@admin.vn',
+            'password' => Hash::make('12345'),
+            'phone_number' => '0123456789',
+          
+        ]);
         for($i = 0; $i < 5 ; $i++){
             DB::table('users')->insert([
                 'name' =>  $faker->name,
+                'roles' =>  'user',
                 'email' =>  $faker->unique()->email,
                 'password' => Hash::make('12345'),
-                // 'name' => Str::random(10),
+                'phone_number' => $faker->numerify('##########'),
                 // 'email' => Str::random(10).'@gmail.com',
-                // 'password' => Hash::make('password'),
             ]);
         }
     }

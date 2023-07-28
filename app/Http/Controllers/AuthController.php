@@ -22,7 +22,7 @@ class AuthController extends Controller
             // Authentication successful
             $user = Auth::user();
             // Generate an authentication token (optional)
-            $token = $user->createToken('authToken')->plainTextToken;
+            $token = $user->createToken('authToken', ['user'])->plainTextToken;
             // Return the token or perform any other action
             return response()->json([
             'token' => $token, 
@@ -55,6 +55,7 @@ class AuthController extends Controller
             $user = new User([
                 'name' => $request->name,
                 'email' => $request->email,
+                'roles' => 'user',
                 'phone_number' => $request->phone_number,
                 'password' => bcrypt($request->password),
             ]);

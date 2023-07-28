@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AuthController;
@@ -22,3 +23,12 @@ Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);  
 
 Route::get('/use',[UserController::class, 'index']);
+
+
+Route::post('/admin/login',[AdminController::class,'login']);  
+Route::group(['middleware' => 'admin'], function () {
+    // Các route dành cho vai trò "admin" ở đây
+    // Route::get('/admin-dashboard', 'AdminController@dashboard');
+    Route::post('/admin/users', [AdminController::class,'getuser']);
+
+});

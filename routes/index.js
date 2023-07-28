@@ -1,11 +1,32 @@
 import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router';
 import admin from './admin.js';
 import user from './user.js';
+import Cookies from 'js-cookie';
 // import public from './public.js';
-const routes = [...admin,...user];
+const routes = [
+  {
+    path: '/admin/login',
+    component: import("../resources/views/pages/admin/login/index.vue"), // Thay "Login" bằng component của trang đăng nhập
+  },
+  ,...admin,...user];
 
 const router = createRouter({
     history: createWebHistory(), // Use createWebHistory with the BASE_URL
     routes,
+  });
+
+
+  router.beforeEach((to, from, next) => {
+    const isCookieValid = Cookies.get('ad_token') !== undefined;
+    const isAdminRoute = to.matched.some(record => record.path.startsWith('/admin'));
+    const isLoginPage = to.path === '/admin/login';
+    if (!isCookieValid && isAdminRoute && !isLoginPage) {
+      next('/admin/login');
+    }else if(isCookieValid &&  isLoginPage){
+      next('/admin/roles');
+
+    } else  {
+      next();
+    }
   });
 export default router;
