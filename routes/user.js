@@ -1,17 +1,23 @@
 const user =[
     {
         path:"/",
+        name: 'home',
         component:() => import("../resources/views/layouts/user.vue"),
         children:[
             {
-                path:"login",
-                name: "auth-home",
-                component: () => import ("../resources/views/pages/auth/auth.vue")
+                path:"/",
+                name: "screenspage",
+                component: () => import ("../resources/views/pages/screens/home/index.vue")
             },
             {
-                path:"/",
-                name: "screens-home",
+                path:"/home",
+                name: "screenspage2",
                 component: () => import ("../resources/views/pages/screens/home/index.vue")
+            },
+            {
+                path:"login",
+                name: "auth",
+                component: () => import ("../resources/views/pages/auth/auth.vue")
             },
             {
                 path:"product",

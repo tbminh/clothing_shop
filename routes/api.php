@@ -11,9 +11,9 @@ use App\Http\Controllers\Api\TextController;
 
 
 
-Route::middleware('auth:sanctum')->get('/user', function(Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function(Request $request) {
+//     return $request->user();
+// });
 
 // Route::prefix('api')->group(function () {
 //     // Route::get('/sp', [TextController::class, 'index']);
@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function(Request $request) {
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);  
 
-Route::get('/use',[UserController::class, 'index']);
+// Route::get('/use',[UserController::class, 'index']);
 
 
 Route::post('/admin/login',[AdminController::class,'login']);  

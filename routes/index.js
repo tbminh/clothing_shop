@@ -6,7 +6,11 @@ import Cookies from 'js-cookie';
 const routes = [
   {
     path: '/admin/login',
-    component: import("../resources/views/pages/admin/login/index.vue"), // Thay "Login" bằng component của trang đăng nhập
+    component: import("../resources/views/pages/admin/login/index.vue"), 
+  },
+  {
+    path: '/:catchAll(.*)',
+    component: import("../resources/views/notfound404.vue"), 
   },
   ,...admin,...user];
 

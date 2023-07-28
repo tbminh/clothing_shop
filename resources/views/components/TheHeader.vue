@@ -4,8 +4,8 @@
 <script>
 import '../../css/header.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-
-/* import font awesome icon component */
+import Cookies from 'js-cookie';
+import { useRouter } from 'vue-router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
@@ -13,13 +13,21 @@ import { faUser, fas, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faUser, fas, faShoppingBag);
 export default {
+  components: {
+    FontAwesomeIcon,
+  },
   data() {
     return {
       navbarClasses: '',
-      showDropdown: false
+      showDropdown: false,
+      user: null,
     };
   },
   mounted() {
+    const myauth = Cookies.get('user');
+    if (myauth !== null && myauth !== undefined) {
+      this.user = JSON.parse(myauth);
+    }
     window.addEventListener('scroll', this.handleScroll);
   },
   beforeDestroy() {
@@ -36,10 +44,19 @@ export default {
     toggleDropdown(show) {
       this.showDropdown = show;
     }
+
   }
 };
 </script>
-
+<script setup>
+import Cookies from 'js-cookie';
+const logout = () => {
+  Cookies.remove('user');
+  Cookies.remove('user_token');
+  const url = new URL('/login', window.location.origin)
+  window.location.href = url.toString()
+}
+</script>
 <template>
   <header>
     <div class="">
@@ -47,7 +64,7 @@ export default {
         <div class="col-11 mx-auto hea-info ">
           <font-awesome-icon :icon="['fas', 'phone']" class="bounce" /> (+84) 336 644 594 &emsp;&emsp;
           <font-awesome-icon :icon="['fas', 'envelope']" class="" /> dinhlamhuytak489@gmail.com
-          <!-- <font-awesome-icon :icon="['fas', 'map-marker-alt']" class="ms-auto" /> dinhlamhuytak489@gmail.com -->
+
         </div>
       </div>
       <div class="container-fluid">
@@ -65,25 +82,23 @@ export default {
             <div class="col-4  d-flex justify-content-end">
               <ul class="navbar-nav  d-flex flex-row ">
                 <li class="nav-item dropdown login  mx-3  ">
-                  <router-link to="/login" class="nav-link textnavlink dropdown-toggle" @mouseenter="toggleDropdown(true)"
-                    @mouseleave="toggleDropdown(false)">
-                    <font-awesome-icon :icon="['fas', 'user']" class="fa-lg" /> <span class="d-none d-sm-inline">My
-                      Account</span>
+                  <router-link :to="user !== null ? '/' : '/login'" class="nav-link textnavlink dropdown-toggle"
+                    @mouseenter="toggleDropdown(true)" @mouseleave="toggleDropdown(false)">
+                    <font-awesome-icon :icon="['fas', 'user']" class="fa-lg" />
+                    <span class="d-none d-sm-inline">{{ user ? user.name : ' My Account' }}</span>
                   </router-link>
-                  <ul class="dropdown-menu dropdown-menu-right" v-if="showDropdown" @mouseenter="toggleDropdown(true)"
+                  <ul class="dropdown-menu dropdown-menu-right" v-if="user !== null" @mouseenter="toggleDropdown(true)"
                     @mouseleave="toggleDropdown(false)">
-                    <li class="m-0 p-0"><a class="dropdown-item  p-3 pr-5" href="#">Đăng nhập</a></li>
+                    <li class="m-0 p-0"><a class="dropdown-item p-3 pr-5" @click="logout">Đăng xuất</a></li>
+                  </ul>
+                  <ul class="dropdown-menu dropdown-menu-right" v-else @mouseenter="toggleDropdown(true)"
+                    @mouseleave="toggleDropdown(false)">
+                    <li class="m-0 p-0"><router-link class="dropdown-item p-3 pr-5" to="/login">Đăng nhập</router-link></li>
                     <li class="m-0 p-0">
                       <hr class="dropdown-divider">
                     </li>
-                    <li class="m-0 p-0"><a class="dropdown-item 
-                    p-3 pr-5" href="#">Đăng ký</a></li>
-                    <li class="m-0 p-0">
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li class="m-0 p-0"><a class="dropdown-item 
-                    p-3 pr-5" href="#">Đăng xuất</a></li>
-
+                    <li class="m-0 p-0"><router-link class="dropdown-item p-3 pr-5" to="/login">Đăng ký</router-link></li>
+                 
                   </ul>
                 </li>
                 <!-- giỏ hàng -->
@@ -95,17 +110,15 @@ export default {
                   </router-link>
                   <ul class="dropdown-menu dropdown-menu-right" v-if="showDropdown" @mouseenter="toggleDropdown(true)"
                     @mouseleave="toggleDropdown(false)">
-                    <li class="m-0 p-0"><a class="dropdown-item  p-3 pr-5" href="#">Đăng nhập</a></li>
+                    <li class="m-0 p-0"><a class="dropdown-item  p-3 pr-5" href="#">Giỏ hàng</a></li>
                   </ul>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
     <nav :class="navbarClasses" class="navbar navbar-expand-lg navbar-dark " style="background-color: #ffafcc;">
       <div class="container-fluid">
         <router-link to="/" class="navbar-brand px-5">Logo</router-link>
@@ -127,35 +140,11 @@ export default {
                 </li>
                 <li><a class="dropdown-item p-3 pr-5" href="#">Giầy dé</a></li>
               </ul>
-
             </li>
             <li class="nav-item  px-3 "><a class="nav-link fs-5 fw-bold" href="#">Giới thiệu</a></li>
             <li class="nav-item  px-3 "><a class="nav-link fs-5 fw-bold" href="#">Blog</a></li>
             <li class="nav-item  px-3  "><a class="nav-link fs-5 fw-bold" href="#">Liên hệ</a></li>
-            <!-- khi thu nhỏ sẽ hiện ra -->
-            <!-- <li class="nav-item dropdown login d-md-none px-5">
-              <a class="nav-link fs-5 fw-bold dropdown-toggle" href="#" @mouseenter="toggleDropdown(true)"
-                @mouseleave="toggleDropdown(false)">
-                <font-awesome-icon :icon="['fas', 'shopping-bag']" class="fa-lg" /></a>
-              <ul class="dropdown-menu dropdown-menu-right" v-if="showDropdown" @mouseenter="toggleDropdown(true)"
-                @mouseleave="toggleDropdown(false)">
-                <li class="m-0 p-0"><a class="dropdown-item 
-                    p-3 pr-5" href="#">Đăng nhập</a></li>
-                <li class="m-0 p-0">
-                  <hr class="dropdown-divider">
-                </li>
-                <li class="m-0 p-0"><a class="dropdown-item 
-                    p-3 pr-5" href="#">Đăng ký</a></li>
-                <li class="m-0 p-0">
-                  <hr class="dropdown-divider">
-                </li>
-                <li class="m-0 p-0"><a class="dropdown-item 
-                    p-3 pr-5" href="#">Đăng xuất</a></li>
-              </ul>
-            </li> -->
-
           </ul>
-
         </div>
       </div>
     </nav>

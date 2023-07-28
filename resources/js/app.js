@@ -1,4 +1,4 @@
-// import 'bootstrap';
+
 import {createApp} from 'vue';
 import router from '../../routes';
 import {Drawer,Button, message} from 'ant-design-vue';
@@ -9,11 +9,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'bootstrap/dist/css/bootstrap-utilities.min.css';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import Cookies from 'js-cookie';
+
 
 const app = createApp(App);
 app.component('font-awesome-icon', FontAwesomeIcon);
-app.use(Cookies);
 app.use(router);
 app.use(Button);
 app.use(Drawer);

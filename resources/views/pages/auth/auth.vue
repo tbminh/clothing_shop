@@ -26,7 +26,7 @@
                     </p>
 
                 </form>
-                <form  @submit.prevent="register" class="sign-up-form">
+                <form @submit.prevent="register" class="sign-up-form">
                     <h2 class="title">Đăng ký</h2>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'user']" class="fa-lg iconinput" />
@@ -42,7 +42,8 @@
                     </div>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'lock']" class="fa-lg iconinput" />
-                        <input placeholder="Mật khẩu" v-model="data.respassword" v-bind:type="showPassword2 ? 'text' : 'password'"
+                        <input placeholder="Mật khẩu" v-model="data.respassword"
+                            v-bind:type="showPassword2 ? 'text' : 'password'"
                             :placeholder="showPassword2 ? 'Mật khẩu' : 'Ẩn mật khẩu'">
                         <span @click="togglePasswordVisibility2">
                             <font-awesome-icon :icon="showPassword2 ? ['fas', 'eye'] : ['fas', 'eye-slash']"
@@ -51,7 +52,8 @@
                     </div>
                     <div class="input-field">
                         <font-awesome-icon :icon="['fas', 'lock']" class="fa-lg iconinput" />
-                        <input placeholder="Xác nhận mật khẩu"  v-model="data.c_password" v-bind:type="showPassword2 ? 'text' : 'password'"
+                        <input placeholder="Xác nhận mật khẩu" v-model="data.c_password"
+                            v-bind:type="showPassword2 ? 'text' : 'password'"
                             :placeholder="showPassword2 ? 'Mật khẩu' : 'Ẩn mật khẩu'">
                         <span @click="togglePasswordVisibility2">
                             <font-awesome-icon :icon="showPassword2 ? ['fas', 'eye'] : ['fas', 'eye-slash']"
@@ -90,6 +92,7 @@
 <script setup>
 import './auth.css';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { ref } from 'vue';
 const signUpMode = ref(false);
 const signInMode = ref(false);
@@ -122,24 +125,23 @@ const togglePasswordVisibility = () => {
 const togglePasswordVisibility2 = () => {
     showPassword2.value = !showPassword2.value;
 };
-
-
-
 const data = ref({
     value: {
         email: '',
         password: ''
     }
 });
-
 const login = () => {
     axios.post('/api/login', {
         email: data.value.email,
         password: data.value.password
     })
         .then(response => {
-            // Xử lý phản hồi từ server sau khi đăng nhập thành công
-            console.log(response.data);
+            const oneHour = 8 / 24; // 1/24 tương ứng với 1 giờ
+            Cookies.set('user', JSON.stringify(response.data.data), { expires: oneHour });
+            Cookies.set('user_token', response.data.token, { expires: oneHour });
+            const url = new URL('/', window.location.origin)
+            window.location.href = url.toString()
         })
         .catch(error => {
             // Xử lý lỗi nếu có
@@ -155,13 +157,16 @@ const register = () => {
         c_password: data.value.c_password,
     })
         .then(response => {
-            // Xử lý phản hồi từ server sau khi đăng nhập thành công
-            console.log(response.data);
+            const oneHour = 8 / 24; // 1/24 tương ứng với 1 giờ
+            Cookies.set('user', JSON.stringify(response.data.data), { expires: oneHour });
+            Cookies.set('user_token', response.data.token, { expires: oneHour });
+            const url = new URL('/', window.location.origin)
+            window.location.href = url.toString()
         })
         .catch(error => {
-            // Xử lý lỗi nếu có
             console.error(error);
         });
+
 };
 
 </script>
