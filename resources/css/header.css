@@ -1,3 +1,10 @@
+body{
+  overflow-x: hidden;
+}
+header{
+  padding:50px 40px;
+}
+
 .fixed-top {
     top: -40px;
     transform: translateY(40px);
@@ -17,12 +24,15 @@
   
   .login:hover .dropdown-menu {
     display: block;
+
+
   }
   
   .dropdown-menu {
     border-radius: 0px;
     padding-bottom: 0px;
     padding-top: 0px;
+
   }
   
   .dropdown-divider {

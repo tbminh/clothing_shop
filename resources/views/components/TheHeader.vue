@@ -58,16 +58,16 @@ const logout = () => {
 }
 </script>
 <template>
-  <header>
-    <div class="">
-      <div class="container-fluid d-none d-sm-block bg-dark ">
+  <header class="m-0 p-0" style="z-index: 9999;">
+   
+      <div class="container-fluid m-0 p-0 d-none d-sm-block bg-dark ">
         <div class="col-11 mx-auto hea-info ">
           <font-awesome-icon :icon="['fas', 'phone']" class="bounce" /> (+84) 336 644 594 &emsp;&emsp;
           <font-awesome-icon :icon="['fas', 'envelope']" class="" /> dinhlamhuytak489@gmail.com
 
         </div>
       </div>
-      <div class="container-fluid">
+      <div class="container-fluid m-0 p-0">
         <div class="col-11 mx-auto hea-info2">
           <div class="row">
             <div class="col-2  d-flex align-items-center">LOGO</div>
@@ -85,7 +85,7 @@ const logout = () => {
                   <router-link :to="user !== null ? '/' : '/login'" class="nav-link textnavlink dropdown-toggle"
                     @mouseenter="toggleDropdown(true)" @mouseleave="toggleDropdown(false)">
                     <font-awesome-icon :icon="['fas', 'user']" class="fa-lg" />
-                    <span class="d-none d-sm-inline">{{ user ? user.name : ' My Account' }}</span>
+                    <span class="d-none d-sm-inline">&ensp;{{ user ? user.name : 'My Account' }}</span>
                   </router-link>
                   <ul class="dropdown-menu dropdown-menu-right" v-if="user !== null" @mouseenter="toggleDropdown(true)"
                     @mouseleave="toggleDropdown(false)">
@@ -110,7 +110,7 @@ const logout = () => {
                   </router-link>
                   <ul class="dropdown-menu dropdown-menu-right" v-if="showDropdown" @mouseenter="toggleDropdown(true)"
                     @mouseleave="toggleDropdown(false)">
-                    <li class="m-0 p-0"><a class="dropdown-item  p-3 pr-5" href="#">Giỏ hàng</a></li>
+                    <li class="m-0 p-0"><a class="dropdown-item  p-3 pr-5" href="#">&ensp;Giỏ hàng</a></li>
                   </ul>
                 </li>
               </ul>
@@ -118,8 +118,8 @@ const logout = () => {
           </div>
         </div>
       </div>
-    </div>
-    <nav :class="navbarClasses" class="navbar navbar-expand-lg navbar-dark " style="background-color: #ffafcc;">
+  
+    <nav :class="navbarClasses " class=" navbar navbar-expand-lg navbar-dark" style="background-color: #ffafcc;">
       <div class="container-fluid">
         <router-link to="/" class="navbar-brand px-5">Logo</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
@@ -129,7 +129,7 @@ const logout = () => {
           <ul class="navbar-nav ms-auto">
             <li class="nav-item  px-3"><a class="nav-link fs-5 fw-bold" href="#">Trang chủ</a></li>
             <li class="nav-item dropdown login px-3 ">
-              <a class="nav-link  fs-5 fw-bold dropdown-toggle" href="#â" @mouseenter="toggleDropdown(true)"
+              <a class="nav-link  fs-5 fw-bold dropdown-toggle" href="#" @mouseenter="toggleDropdown(true)"
                 @mouseleave="toggleDropdown(false)">
                 Sản phẩm</a>
               <ul class="dropdown-menu dropdown-menu-right" v-if="showDropdown" @mouseenter="toggleDropdown(true)"

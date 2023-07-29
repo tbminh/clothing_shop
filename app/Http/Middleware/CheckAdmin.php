@@ -21,6 +21,6 @@ class CheckAdmin
             return $next($request);
         }
 
-        return response()->json(['message' => 'Unauthorized.'], 401);
+        return response()->json(['message' => 'Bạn không quyền truy cập'], 401);
     }
 }

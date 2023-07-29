@@ -21,7 +21,7 @@ const router = createRouter({
 
 
   router.beforeEach((to, from, next) => {
-    const isCookieValid = Cookies.get('ad_token') !== undefined;
+    const isCookieValid = Cookies.get('admin_token') !== undefined;
     const isAdminRoute = to.matched.some(record => record.path.startsWith('/admin'));
     const isLoginPage = to.path === '/admin/login';
     if (!isCookieValid && isAdminRoute && !isLoginPage) {

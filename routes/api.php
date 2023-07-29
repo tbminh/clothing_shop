@@ -11,9 +11,9 @@ use App\Http\Controllers\Api\TextController;
 
 
 
-// Route::middleware('auth:sanctum')->get('/user', function(Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:sanctum')->get('/user', function(Request $request) {
+    return $request->user();
+});
 
 // Route::prefix('api')->group(function () {
 //     // Route::get('/sp', [TextController::class, 'index']);
@@ -27,8 +27,7 @@ Route::post('/login',[AuthController::class,'login']);
 
 Route::post('/admin/login',[AdminController::class,'login']);  
 Route::group(['middleware' => 'admin'], function () {
-    // Các route dành cho vai trò "admin" ở đây
-    // Route::get('/admin-dashboard', 'AdminController@dashboard');
-    Route::post('/admin/users', [AdminController::class,'getuser']);
+  
+    Route::get('/admin_users', [AdminController::class,'getuser']);
 
 });

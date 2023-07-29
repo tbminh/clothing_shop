@@ -10,7 +10,7 @@
             <br>
             <h3 class="header-title">
               <div class="logo">
-                Đăng<span class="logo-font"> Nhập</span> 
+                Đăng<span class="logo-font"> Nhập</span>
               </div>
             </h3>
             <form @submit.prevent="login" class="sign-in-form ">
@@ -20,7 +20,8 @@
               </div>
               <div class="input-field">
                 <font-awesome-icon :icon="['fas', 'lock']" class="fa-lg iconinput" />
-                <input placeholder="Mật khẩu" v-bind:type="showPassword ? 'text' : 'password'" v-model="data.password" required>
+                <input placeholder="Mật khẩu" v-bind:type="showPassword ? 'text' : 'password'" v-model="data.password"
+                  required>
                 <span @click="togglePasswordVisibility">
                   <font-awesome-icon :icon="showPassword ? ['fas', 'eye'] : ['fas', 'eye-slash']"
                     class="fa-lg showpass" />
@@ -98,9 +99,11 @@ const login = () => {
     password: data.value.password
   })
     .then(response => {
-      // Xử lý phản hồi từ server sau khi đăng nhập thành công
-      console.log(response.data);
-    Cookies.set('ad_token', response.data.token);
+      const Hour = 8 / 24; 
+      Cookies.set('admin', JSON.stringify(response.data.data), { expires: Hour });
+      Cookies.set('admin_token', response.data.token, { expires: Hour });
+      const url = new URL('admin/roles', window.location.origin)
+      window.location.href = url.toString()
 
     })
     .catch(error => {

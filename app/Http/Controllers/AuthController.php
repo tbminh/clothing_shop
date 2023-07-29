@@ -60,7 +60,7 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password),
             ]);
             $user->save();
-            $token = $user->createToken('authToken')->plainTextToken;
+            $token = $user->createToken('authToken', ['user'])->plainTextToken;
         return response()->json([
             'token' => $token, 
             'message' => 'Đăng ký thành công',
