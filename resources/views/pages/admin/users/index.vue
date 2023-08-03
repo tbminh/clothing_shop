@@ -1,6 +1,8 @@
-<template>
-  <div class="container  border">
-    <table ref="dataTable" class="w-100 border"></table>
+<template >
+  <div class="container bg-white h-100">
+    <div class="table-responsive h-100">
+      <table ref="dataTable" class="w-100 bg-white border"></table>
+    </div>
   </div>
 </template>
 
@@ -55,6 +57,7 @@ export default {
         language: {
           url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/vi.json',
         },
+        responsive: true,
        
       });
     },
@@ -62,19 +65,65 @@ export default {
 };
 </script>
 <style>
+.dataTables_wrapper  {
+  /* margin-top: 10px !important; */
+  padding-top: 20px; 
+  padding-bottom: 20px;
+  background-color: transparent !important;
+
+}
+.dataTable thead th{
+  background-color: #3c096c !important;
+  font-weight: bold;
+  text-align: center;
+  color:white;
+}
 table.dataTable tbody th,
 table.dataTable tbody td {
-  /* border: 1px solid #ccc; */
+  border-top: 1px solid #ff1979;
+  border-bottom: 1px solid #ff1979;
   border-collapse: collapse;
 }
-
 .even {
-  background-color: #cdbaba !important;
-  /* Màu cho hàng chẵn */
+  background-color: #bbdefb !important;
 }
-
 .old {
   background-color: #fff !important;
-  /* Màu cho hàng lẻ */
+}
+.dataTables_filter{
+  margin-bottom: 10px;
+}
+body{
+  background-color: #caf0f8;
+}
+/* .table-responsive {
+  overflow-x: auto;
+} */
+/* chơi thử */
+.dataTables_scrollHead {
+  overflow: hidden;
+}
+
+.dataTables_scrollHeadInner {
+  padding-right: 17px; /* Add extra padding to avoid overflow due to scrollbar */
+}
+
+.dataTables_scrollHeadInner table {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Adjust the styles of the header cells if needed */
+.table-responsive {
+  overflow-y: auto;
+  max-height: calc(100vh - 100px); /* Adjust 100px to accommodate other elements on the page if needed */
+}
+.dataTables_scrollHead th {
+  background-color: #3c096c !important;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  border-top: 1px solid #ff1979;
+  border-bottom: 1px solid #ff1979;
 }
 </style>

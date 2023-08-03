@@ -137,7 +137,7 @@ const login = () => {
         password: data.value.password
     })
         .then(response => {
-            const Hour = 8 / 24; // 1/24 tương ứng với 1 giờ
+            const Hour = 8 / 24; 
             Cookies.set('user', JSON.stringify(response.data.data), { expires: Hour });
             Cookies.set('user_token', response.data.token, { expires: Hour });
             const url = new URL('/', window.location.origin)
@@ -157,7 +157,7 @@ const register = () => {
         c_password: data.value.c_password,
     })
         .then(response => {
-            const Hour = 8 / 24; // 1/24 tương ứng với 1 giờ
+            const Hour = 8 / 24; 
             Cookies.set('user', JSON.stringify(response.data.data), { expires: Hour });
             Cookies.set('user_token', response.data.token, { expires: Hour });
             const url = new URL('/', window.location.origin)

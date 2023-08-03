@@ -1,0 +1,1 @@
+import{_ as e}from"./app-93b73191.js";const s={data(){return{showSidebar:!1}},methods:{toggleSidebar(){this.showSidebar=!this.showSidebar},closeSidebar(){this.showSidebar&&(this.showSidebar=!1)}}};function t(r,a,i,o,d,n){return null}const c=e(s,[["render",t]]);export{c as default};

@@ -3,14 +3,11 @@
 
 <script>
 import '../../css/header.css'
-import { library } from '@fortawesome/fontawesome-svg-core'
 import Cookies from 'js-cookie';
 import { useRouter } from 'vue-router';
+import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-/* import specific icons */
 import { faUser, fas, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
-
 library.add(faUser, fas, faShoppingBag);
 export default {
   components: {
@@ -98,7 +95,6 @@ const logout = () => {
                       <hr class="dropdown-divider">
                     </li>
                     <li class="m-0 p-0"><router-link class="dropdown-item p-3 pr-5" to="/login">Đăng ký</router-link></li>
-                 
                   </ul>
                 </li>
                 <!-- giỏ hàng -->

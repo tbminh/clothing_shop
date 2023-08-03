@@ -21,6 +21,12 @@ const admin = [
                 component: () =>
                     import("../resources/views/pages/admin/roles/index.vue"),
             },
+            {
+                path: "blog",
+                name: "admin-blog",
+                component: () =>
+                    import("../resources/views/pages/admin/blog/index.vue"),
+            },
         ],
     },
 ];

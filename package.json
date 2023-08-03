@@ -22,6 +22,8 @@
         "vite": "^4.4.6"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^39.0.0",
+        "@ckeditor/ckeditor5-vue": "^5.1.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",
         "@fortawesome/vue-fontawesome": "^3.0.3",

@@ -1,0 +1,1 @@
+import{_ as n,j as e,k as r,F as a,I as s,p as c}from"./app-93b73191.js";const o={};function l(_,d){return e(),r("div",null,[(e(),r(a,null,s(1e4,t=>c("div",{key:t,class:"text-primary text-center"}," Blog ")),64))])}const f=n(o,[["render",l]]);export{f as default};
