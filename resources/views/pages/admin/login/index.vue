@@ -77,7 +77,8 @@ import './stylelogin.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faUser, fas, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
-
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 library.add(faUser, fas, faShoppingBag);
 const showPassword = ref(false);
 
@@ -99,11 +100,23 @@ const login = () => {
     password: data.value.password
   })
     .then(response => {
-      const Hour = 8 / 24; 
-      Cookies.set('admin', JSON.stringify(response.data.data), { expires: Hour });
-      Cookies.set('admin_token', response.data.token, { expires: Hour });
-      const url = new URL('admin/', window.location.origin)
-      window.location.href = url.toString()
+      if(!response.data.data || response.errors){
+        const notify = () => {
+          toast(response.data.message, {
+            autoClose: 2000,
+          }); // ToastOptions
+        }
+        notify(); // Call the notify function to show the toast
+        
+        console.log('mess', response.data.message)
+      }else if(response.data.data && response.data.token){
+        const Hour = 8 / 24; 
+        Cookies.set('admin', JSON.stringify(response.data.data), { expires: Hour });
+        Cookies.set('admin_token', response.data.token, { expires: Hour });
+        const url = new URL('admin/', window.location.origin)
+        window.location.href = url.toString()
+
+      }
 
     })
     .catch(error => {

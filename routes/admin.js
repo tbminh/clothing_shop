@@ -16,10 +16,10 @@ const admin = [
                     import("../resources/views/pages/admin/users/index.vue"),
             },
             {
-                path: "settings",
-                name: "admin-settings",
+                path: "roles",
+                name: "admin-roles",
                 component: () =>
-                    import("../resources/views/pages/admin/settings/index.vue"),
+                    import("../resources/views/pages/admin/roles/index.vue"),
             },
         ],
     },

@@ -31,6 +31,7 @@
         "js-cookie": "^3.0.5",
         "vue": "^3.3.4",
         "vue-materialize-datatable": "^1.0.4",
-        "vue-router": "^4.2.4"
+        "vue-router": "^4.2.4",
+        "vue3-toastify": "^0.1.11"
     }
 }

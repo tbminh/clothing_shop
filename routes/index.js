@@ -27,7 +27,7 @@ const router = createRouter({
     if (!isCookieValid && isAdminRoute && !isLoginPage) {
       next('/admin/login');
     }else if(isCookieValid &&  isLoginPage){
-      next('/admin/roles');
+      next('/admin/users');
 
     } else  {
       next();
