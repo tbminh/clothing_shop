@@ -4,10 +4,16 @@ const admin = [
         component: () => import("../resources/views/layouts/admin.vue"),
         children: [
             {
-                path: "roles",
-                name: "admin-roles",
+                path: "",
+                name: "admin-home",
                 component: () =>
-                    import("../resources/views/pages/admin/roles/index.vue"),
+                    import("../resources/views/pages/admin/home/index.vue"),
+            },
+            {
+                path: "users",
+                name: "admin-users",
+                component: () =>
+                    import("../resources/views/pages/admin/users/index.vue"),
             },
             {
                 path: "settings",

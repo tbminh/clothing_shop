@@ -102,7 +102,7 @@ const login = () => {
       const Hour = 8 / 24; 
       Cookies.set('admin', JSON.stringify(response.data.data), { expires: Hour });
       Cookies.set('admin_token', response.data.token, { expires: Hour });
-      const url = new URL('admin/roles', window.location.origin)
+      const url = new URL('admin/', window.location.origin)
       window.location.href = url.toString()
 
     })

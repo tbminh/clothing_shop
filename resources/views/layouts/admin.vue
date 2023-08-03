@@ -11,15 +11,15 @@
 }
 </style>
 <template>
-   <!-- <TheHeader /> -->
+   <TheHeader />
     <router-view></router-view>
 </template>
 <script>
-// import TheHeader from '../components/TheHeader.vue';
+import TheHeader from '../components/TheHeader_admin.vue';
 
 export default {
     components:{
-        // TheHeader
+        TheHeader
     }
 }
 </script>
