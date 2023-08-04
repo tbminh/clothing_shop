@@ -27,7 +27,16 @@
                     class="fa-lg showpass" />
                 </span>
               </div>
-              <input type="submit" value="Đăng nhập" class=" buttonsubmit">
+              <!-- <input type="submit" :value=" loading ? '<font-awesome-icon :icon="['fas', 'spinner']" spin style="color: #010409;" />': 'Đăng nhập'" class=" buttonsubmit">
+               -->
+              <button @click="login" :disabled="loading"  class="buttonsubmit">
+                <template v-if="loading">
+                  <font-awesome-icon :icon="['fas', 'spinner']" spin style="color: #010409;" />
+                </template>
+               
+                  Đăng nhập
+               
+              </button>
             </form>
           </div>
           <div class="col-sm-6 pt-5  hide-on-mobile">
@@ -81,7 +90,7 @@ import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 library.add(faUser, fas, faShoppingBag);
 const showPassword = ref(false);
-
+const loading = ref(false);
 // Method to toggle password visibility
 const togglePasswordVisibility = () => {
   showPassword.value = !showPassword.value;
@@ -95,33 +104,35 @@ const data = ref({
 });
 
 const login = () => {
+  loading.value=true;
   axios.post('/api/admin/login', {
     email: data.value.email,
     password: data.value.password
   })
     .then(response => {
-      if(!response.data.data || response.errors){
+      if (!response.data.data || response.errors) {
         const notify = () => {
           toast(response.data.message, {
             autoClose: 2000,
           }); // ToastOptions
         }
         notify(); // Call the notify function to show the toast
-        
+
         console.log('mess', response.data.message)
-      }else if(response.data.data && response.data.token){
-        const Hour = 8 / 24; 
+      } else if (response.data.data && response.data.token) {
+        const Hour = 8 / 24;
         Cookies.set('admin', JSON.stringify(response.data.data), { expires: Hour });
         Cookies.set('admin_token', response.data.token, { expires: Hour });
         const url = new URL('admin/', window.location.origin)
         window.location.href = url.toString()
 
       }
-
+      
     })
     .catch(error => {
       // Xử lý lỗi nếu có
       console.error(error);
     });
+    loading.value=false;
 };
 </script>

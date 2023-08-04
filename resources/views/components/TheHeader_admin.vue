@@ -19,7 +19,8 @@
                         <router-link to="/admin/roles" class="nav-link" :class="{ active: isLinkActive('/admin/roles') }" >Sản phẩm</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <!-- <a class="nav-link" href="#">Blog</a> -->
+                        <router-link to="/admin/blog" class="nav-link" :class="{ active: isLinkActive('/admin/blog') }" >Blog</router-link>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -111,22 +112,16 @@ export default {
     margin-bottom: 0;
     font-weight: bolder;
     color: white !important;
-
-
 }
-
 .nav-item .nav-link:hover,
 .nav-item .nav-link:focus {
     color: wheat;
 }
-
 .btndropdownmenu:hover,
 .btndropdownmenu:focus {
     color: rgb(0, 0, 0) !important;
 }
-
 .bg-nav {
-
     background-color: #03045e;
 }
 
@@ -163,5 +158,7 @@ button {
     /* display: flex; */
     /* border:1px dashed rgb(255, 255, 255); */
 }
-
+body{
+  background-color: #caf0f8;
+}
 </style>

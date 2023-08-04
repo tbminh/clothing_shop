@@ -35,10 +35,17 @@ class AdminController extends Controller
                     'encode' => 1,
                 ], 200);
             }
+        }else{
+            return response()->json([
+                'token' => '',
+                'data' => '',
+                'message' => 'Email hoặc mật khẩu không đúng',
+                'encode' => 1,
+            ], 200);
         }
-        throw ValidationException::withMessages([
-            'email' => ['The provided credentials are incorrect.'],
-        ]);
+        // throw ValidationException::withMessages([
+        //     'email' => ['The provided credentials are incorrect.'],
+        // ]);
     }
 
 

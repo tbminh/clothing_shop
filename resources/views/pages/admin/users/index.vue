@@ -93,9 +93,7 @@ table.dataTable tbody td {
 .dataTables_filter{
   margin-bottom: 10px;
 }
-body{
-  background-color: #caf0f8;
-}
+
 /* .table-responsive {
   overflow-x: auto;
 } */
